@@ -1,0 +1,21 @@
+---
+title: "E155 Portfolio"
+image: images/Headshot.JPG
+about:
+    template: jolla
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/kaden-cassidy/
+        - icon: github
+          text: GitHub
+          href: https://github.com/jacassidy
+        - icon: instagram
+          text: Throwing
+          href: https://www.instagram.com/kaden_throws/
+---
+Kaden Cassidy is an "Applied Mathematics in Computation" major at Harvey Mudd College. He works in the VLSI Lab
+as a Clay-Wolken fellow where he is creating the next generation of ceritifcation and hardware implementation
+of the RISCV Vector Extension for RISCV processors. He also competes for the CMS Track & Field team in the hammer,
+shotput and discus throw.
+
