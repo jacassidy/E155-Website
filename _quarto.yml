@@ -7,6 +7,10 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: "Labs"
+        menu:               # this creates a dropdown
+          - text: "Lab 1"
+            href: labs/lab1/lab1.qmd
 
 format:
   html:
