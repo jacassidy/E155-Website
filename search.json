@@ -74,6 +74,76 @@
     "href": "labs/lab1/lab1.html#ai-prototype-summary",
     "title": "Lab 1",
     "section": "AI Prototype Summary",
-    "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nWrite SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.\n\nIt responded with this\nWhen put into a new project it failed to compile, because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.\nI did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.\nOverall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected."
+    "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nWrite SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.\n\nIt responded with this\nWhen put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.\nI did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.\nOverall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html",
+    "href": "labs/lab2/lab2.html",
+    "title": "Lab 2",
+    "section": "",
+    "text": "In this lab, the modules from the previous lab were used to control two seven-segment displays with a single display decoder, and a single set of seven pins, by time multiplexing between the two displays. In this lab, the FPGA is used distinctly as a control unit (rather than also as a source of power) to develop a deeper understanding of how to use an FPGA in real world applications."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#introduction",
+    "href": "labs/lab2/lab2.html#introduction",
+    "title": "Lab 2",
+    "section": "",
+    "text": "In this lab, the modules from the previous lab were used to control two seven-segment displays with a single display decoder, and a single set of seven pins, by time multiplexing between the two displays. In this lab, the FPGA is used distinctly as a control unit (rather than also as a source of power) to develop a deeper understanding of how to use an FPGA in real world applications."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#design-and-testing-methodology",
+    "href": "labs/lab2/lab2.html#design-and-testing-methodology",
+    "title": "Lab 2",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nThe on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A register is then used to store the current count, with the clock signal connected to the oscillator and D connected to Q through an adder which adds 1 to the current value. A series of AND gates then check when the count has reached __________ and toggle a flop. This flop signal is used to designate which value should drive the 7 external pins, and which display to power.\nOn the breadboard, the common terminals of the two seven-segment displays were bridged so that a single set of 7 pins could be used to drive both displays. A PNP transistor was used to selectively power one display at a time, by connecting an FPGA pin to the base of the transistor through a 3k resistor.\nFunctionality of the main modules in this lab were confirmed in the previous lab testbenches. In this lab all combinations of the two values were itterated over to confrim that the 5 LED display correctly displayed the two values added together."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#technical-documentation",
+    "href": "labs/lab2/lab2.html#technical-documentation",
+    "title": "Lab 2",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#block-diagram",
+    "href": "labs/lab2/lab2.html#block-diagram",
+    "title": "Lab 2",
+    "section": "Block Diagram",
+    "text": "Block Diagram\n\n\n\nFigure 1: Block diagram of the SystemVerilog written for this lab\n\n\nThe block diagram gives a high-level schematic of the overall design. The top module include the high-speed oscillator as well as a divider and the combinational logic used to drive the leds."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#schematic",
+    "href": "labs/lab2/lab2.html#schematic",
+    "title": "Lab 2",
+    "section": "Schematic",
+    "text": "Schematic\n\n\n\nFigure 2: Schematic of the breadboard circuit for the seven segment display\n\n\nThe schematic gives the design of the circuit breadboarded, the general idea being that the 3v3 line is connected to a common terminal on the seven segment display, then each LED drains through a 180 ohm resistor to an FPGA pin. If the pin is high, there is no voltage difference and no current flows, when the pin goes low the LED drains through the pin to ground. A resistance of 180 ohms was chosen as 7.5mA was identified as an optimal current from the datasheet, and the LED is expected to have a 1.95v drop at this current. Thus (3.3-1.95) / 7.5mA = 180 ohms."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#results-and-discussion",
+    "href": "labs/lab2/lab2.html#results-and-discussion",
+    "title": "Lab 2",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\n\n\nFigure 3: Final board design all wired\n\n\nI was able to successfully complete the entire lab with everything functioning correctly. The system is quick and reliable, and I am very satisfied with the product."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#testbench-simulation",
+    "href": "labs/lab2/lab2.html#testbench-simulation",
+    "title": "Lab 2",
+    "section": "Testbench Simulation",
+    "text": "Testbench Simulation\n   \nThe testbenches were used to confirm that the LEDs behave properly in all possible permutations of the 4 switches used to control them. Getting the testbench to run also proved useful for debugging before uploading to the FPGA."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#conclusion",
+    "href": "labs/lab2/lab2.html#conclusion",
+    "title": "Lab 2",
+    "section": "Conclusion",
+    "text": "Conclusion\nTo complete this lab, first the test board had to be soldered in its entirety including many SMD components. A simple test program was then used to debug the programming software and get used to the workflow for using the FPGA in a development environment. SystemVerilog code was then written to generate a 2.4Hz digitally oscillating signal as well as a combinational logic link between 4 onboard switches and an externally wired seven segment display. The seven segment display was then wired on a breadboard to confirm hardware functionality. This lab took me about 10 hours."
+  },
+  {
+    "objectID": "labs/lab2/lab2.html#ai-prototype-summary",
+    "href": "labs/lab2/lab2.html#ai-prototype-summary",
+    "title": "Lab 2",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nWrite SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.\n\nIt responded with this\nWhen put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.\nI did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.\nOverall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected."
   }
 ]

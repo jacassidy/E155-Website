@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 1 – E155 Portfolio</title>
+<title>Lab 2 – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1</h1>
+<h1 class="title">Lab 2</h1>
 </div>
 
 
@@ -156,12 +156,13 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, simple SystemVerilog modules were designed to control a seven-segment display as well as blink an LED at 2.4Hz. The design utilized onboard switches to designate the hexidecimal number to display as well as the onboard 48MHz high-speed oscillator to generate the 2.4Hz signal.</p>
+<p>In this lab, the modules from the previous lab were used to control two seven-segment displays with a single display decoder, and a single set of seven pins, by time multiplexing between the two displays. In this lab, the FPGA is used distinctly as a control unit (rather than also as a source of power) to develop a deeper understanding of how to use an FPGA in real world applications.</p>
 </section>
 <section id="design-and-testing-methodology" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
-<p>The on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A register is then used to store the current count, with the clock signal connected to the oscillator and D connected to Q through a 27 bit adder which adds 1 to the current value. A series of AND gates then check when the count has reached 20000000 and toggle a flop. This flop signal is then used to drive the LED since it digitally oscillates at 2.4Hz.</p>
-<p>The seven segment display and onboard LEDs are controlled via combinational logic and their functionality is confirmed by testbenches that consider all 2^4 input permutations. The seven segment display is powered by a 3v3 line where each LED drains through a resistor to a pin on the FPGA.</p>
+<p>The on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A register is then used to store the current count, with the clock signal connected to the oscillator and D connected to Q through an adder which adds 1 to the current value. A series of AND gates then check when the count has reached __________ and toggle a flop. This flop signal is used to designate which value should drive the 7 external pins, and which display to power.</p>
+<p>On the breadboard, the common terminals of the two seven-segment displays were bridged so that a single set of 7 pins could be used to drive both displays. A PNP transistor was used to selectively power one display at a time, by connecting an FPGA pin to the base of the transistor through a 3k resistor.</p>
+<p>Functionality of the main modules in this lab were confirmed in the previous lab testbenches. In this lab all combinations of the two values were itterated over to confrim that the 5 LED display correctly displayed the two values added together.</p>
 </section>
 <section id="technical-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
@@ -213,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Write SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.</p>
 </blockquote>
 <p>It responded with <a href="https://chatgpt.com/share/68b8a9c3-2b68-8012-8123-0eba9b81e6e8">this</a></p>
-<p>When put into a new project it failed to compile, because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.</p>
+<p>When put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.</p>
 <p>I did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.</p>
 <p>Overall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected.</p>
 
