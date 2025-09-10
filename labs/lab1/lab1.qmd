@@ -1,6 +1,5 @@
 ---
 title: "Lab 1"
-# image: images/Headshot.JPG
 ---
 ## Introduction
 
@@ -37,8 +36,11 @@ I was able to successfully complete the entire lab with everything functioning c
 ## Testbench Simulation
 
 ![Figure 4: Waveforms of testbench covering "top" module](Images/testbenchtop.png)
+
 ![Figure 5: Testbench of top successfully completing all test cases](Images/Success.png)
+
 ![Figure 6: Waveforms of testbench covering "seven_segment_display" module](Images/sevensegtestbench.png)
+
 ![Figure 7: Testbench of seven-segment display successfully completing all test cases](Images/Success.png)
 
 
@@ -57,7 +59,7 @@ When giving Chat GPT 5 the following prompt:
 
 It responded with [this](https://chatgpt.com/share/68b8a9c3-2b68-8012-8123-0eba9b81e6e8)
 
-When put into a new project it failed to compile, because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.
+When put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.
 
 I did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.
 
