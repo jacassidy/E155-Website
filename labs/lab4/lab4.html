@@ -162,7 +162,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
-<p>This lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these periferals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.</p>
+<p>This lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these peripherals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.</p>
+<p>ARR and PSC values for the timers were chosen to be fixed for “wait” delays as 0.01ms of precession was adequate, but a dynamic algorithm was used for PWM frequency to achieve target accuracy of 1% as confirmed in the table below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/NoteErrorTable.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Errors of notes within target range</figcaption>
+</figure>
+</div>
 </section>
 <section id="technical-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
@@ -172,8 +179,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/NoteErrorTable.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 1: Schematic of amplifier for speaker</figcaption>
+<p><img src="images/schematic.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Schematic of amplifier for speaker</figcaption>
 </figure>
 </div>
 <p>The schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume.</p>

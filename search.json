@@ -235,7 +235,7 @@
     "href": "labs/lab4/lab4.html#design",
     "title": "Lab 3",
     "section": "Design",
-    "text": "Design\nThis lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these periferals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents."
+    "text": "Design\nThis lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these peripherals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.\nARR and PSC values for the timers were chosen to be fixed for “wait” delays as 0.01ms of precession was adequate, but a dynamic algorithm was used for PWM frequency to achieve target accuracy of 1% as confirmed in the table below:\n\n\n\nFigure 1: Errors of notes within target range"
   },
   {
     "objectID": "labs/lab4/lab4.html#technical-documentation",
@@ -249,7 +249,7 @@
     "href": "labs/lab4/lab4.html#schematic",
     "title": "Lab 3",
     "section": "Schematic",
-    "text": "Schematic\n\n\n\nFigure 1: Schematic of amplifier for speaker\n\n\nThe schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume."
+    "text": "Schematic\n\n\n\nFigure 2: Schematic of amplifier for speaker\n\n\nThe schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume."
   },
   {
     "objectID": "labs/lab4/lab4.html#results-and-discussion",
