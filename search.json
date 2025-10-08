@@ -77,6 +77,62 @@
     "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 two different types of prompts to complete the lab: 1 shot, and multiple steps.\nLink to 1 shot transcript\nLink to multiple step transcript\nConsidering the two side by side I think there are advantages to each. The advantage of the 1 shot is allowed the most flexibility of design, for someone who isn’t sure about the best approach to go with, it can optimize at a higher level before getting into the specifics of a design. The disadvantage, and the advantage of the multi-step method, is if one already has a design structure in mind and simply wants the chat bot to create this vision, the 1 shot method doesn’t follow that closely, while the multiple step method allows for a specific design of one module that is then integrated by further modules generated.\nFor a hardware designer I would recommend the multi-step process as it forces the designer to already have a clear vision of the hardware, which is important to have before writing code. While I could understand the general scheme of what the LLM was trying to do, it was very difficult to envision the hardware which I believe is strongly counterproductive to good hardware design."
   },
   {
+    "objectID": "labs/lab5/lab5.html",
+    "href": "labs/lab5/lab5.html",
+    "title": "Lab 5",
+    "section": "",
+    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#introduction",
+    "href": "labs/lab5/lab5.html#introduction",
+    "title": "Lab 5",
+    "section": "",
+    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#design",
+    "href": "labs/lab5/lab5.html#design",
+    "title": "Lab 5",
+    "section": "Design",
+    "text": "Design\nThis lab required reading through the reference manual, programming manual and data sheet to debug interrupt code and successfully get two interupts working in parallel and interacting with one another."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#technical-documentation",
+    "href": "labs/lab5/lab5.html#technical-documentation",
+    "title": "Lab 5",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#schematic",
+    "href": "labs/lab5/lab5.html#schematic",
+    "title": "Lab 5",
+    "section": "Schematic",
+    "text": "Schematic\n\n\n\nFigure 1: Schematic of circuit\n\n\nThe schematic gives the design of the circuit breadboarded, essentiall the motor is just connected to power and to the MCU."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#results-and-discussion",
+    "href": "labs/lab5/lab5.html#results-and-discussion",
+    "title": "Lab 5",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nI was able to successfully complete the entire lab with everything functioning correctly."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#conclusion",
+    "href": "labs/lab5/lab5.html#conclusion",
+    "title": "Lab 5",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis lab taught the general basics of what interrupts look like internally on the MCU and what the range of functionality is regarding interrupts. It also taught good habits for management of interrupts and how to integrate them to a synchronous loop.\nThis lab took me 10 hours."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#ai-prototype-summary",
+    "href": "labs/lab5/lab5.html#ai-prototype-summary",
+    "title": "Lab 5",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 an open-ended prompt to create interupt based motor encoder monitor for the STM32l432KC\nLink to transcript\nAlthough the lab restricted us from using timer-based interrupts, the LLM’s generated solution—which leveraged the STM32L432KC’s hardware encoder mode on TIM2 (PA0/PA1)—seeming like a better solution than the required EXTI interrupt approach. It did not immediately compile but I liked the ideas behind it and would say in this case, the LLM was very helpful as a starting base for doing the most conventional and effective approach."
+  },
+  {
     "objectID": "labs/lab1/lab1.html",
     "href": "labs/lab1/lab1.html",
     "title": "Lab 1",
