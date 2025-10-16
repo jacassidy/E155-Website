@@ -227,10 +227,6 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Display updates at &gt;20 Hz<br>
 </li>
-<li>Display does not flicker<br>
-</li>
-<li>Display does not ghost between frames<br>
-</li>
 <li>Blocks clear at completed lines and update correctly<br>
 </li>
 <li>Blocks fall at standard rate<br>
@@ -239,9 +235,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Game boundaries prevent invalid movement<br>
 </li>
-<li>No visibly obvious bugs<br>
+<li>No visibly obvious gameplay bugs<br>
 </li>
-<li>Player can control piece movement with button input</li>
+<li>Player can control piece movement with button input<br>
+</li>
+<li>Blocks move left and right</li>
 </ul>
 <hr>
 </section>
@@ -267,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The FPGA implements a <strong>hardware Tetris engine</strong> consisting of the following modules:</p>
 <section id="vga-controller" class="level3">
 <h3 class="anchored" data-anchor-id="vga-controller">VGA Controller</h3>
-<p>Generates 640×480 @ 60 Hz timing signals and color data from block map memory.</p>
+<p>Generates 800x600 @ 60 Hz timing signals and color data from block map memory.</p>
 </section>
 <section id="block-map-memory" class="level3">
 <h3 class="anchored" data-anchor-id="block-map-memory">Block Map Memory</h3>
@@ -283,11 +281,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="mcu-interface-module" class="level3">
 <h3 class="anchored" data-anchor-id="mcu-interface-module">MCU Interface Module</h3>
-<p>Implements a simple <strong>SPI slave</strong> interface to receive player inputs (left, right, rotate, drop) and new piece identifiers from the MCU.</p>
+<p>Implements a simple <strong>SPI</strong> interface to receive player inputs (left, right, rotate, drop) and new piece identifiers from the MCU.</p>
 </section>
 <section id="clocking-timing" class="level3">
 <h3 class="anchored" data-anchor-id="clocking-timing">Clocking &amp; Timing</h3>
-<p>Uses a <strong>25 MHz</strong> system clock for VGA synchronization and deterministic updates at &gt;20 Hz refresh rate.</p>
+<p>Uses a <strong>80 MHz</strong> system clock for VGA synchronization and deterministic updates at &gt;20 Hz refresh rate.</p>
 <hr>
 </section>
 </section>
