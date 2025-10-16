@@ -19,6 +19,10 @@ website:
             href: labs/lab4/lab4.qmd
           - text: "Lab 5"
             href: labs/lab5/lab5.qmd
+      - text: "Project"
+        menu:               # this creates a dropdown
+          - text: "Proposal"
+            href: project/proposal/proposal.qmd
 
 format:
   html:
