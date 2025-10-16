@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kaden Cassidy and Noah Fotenos">
+<meta name="dcterms.date" content="2025-10-16">
 
-<title>Lab 4 – E155 Portfolio</title>
+<title>Hardware Tetris Project Proposal – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,13 +149,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
-  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a></li>
-  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
-  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#ai-prototype-summary" id="toc-ai-prototype-summary" class="nav-link" data-scroll-target="#ai-prototype-summary">AI Prototype Summary</a></li>
+  <li><a href="#project-description-and-overview" id="toc-project-description-and-overview" class="nav-link active" data-scroll-target="#project-description-and-overview">Project Description and Overview</a></li>
+  <li><a href="#proficiency-goals" id="toc-proficiency-goals" class="nav-link" data-scroll-target="#proficiency-goals">Proficiency Goals</a></li>
+  <li><a href="#excellency-goals" id="toc-excellency-goals" class="nav-link" data-scroll-target="#excellency-goals">Excellency Goals</a></li>
+  <li><a href="#fpga-design-details" id="toc-fpga-design-details" class="nav-link" data-scroll-target="#fpga-design-details">FPGA Design Details</a>
+  <ul class="collapse">
+  <li><a href="#vga-controller" id="toc-vga-controller" class="nav-link" data-scroll-target="#vga-controller">VGA Controller</a></li>
+  <li><a href="#block-map-memory" id="toc-block-map-memory" class="nav-link" data-scroll-target="#block-map-memory">Block Map Memory</a></li>
+  <li><a href="#piece-logic" id="toc-piece-logic" class="nav-link" data-scroll-target="#piece-logic">Piece Logic</a></li>
+  <li><a href="#fsm-game-controller" id="toc-fsm-game-controller" class="nav-link" data-scroll-target="#fsm-game-controller">FSM Game Controller</a></li>
+  <li><a href="#mcu-interface-module" id="toc-mcu-interface-module" class="nav-link" data-scroll-target="#mcu-interface-module">MCU Interface Module</a></li>
+  <li><a href="#clocking-timing" id="toc-clocking-timing" class="nav-link" data-scroll-target="#clocking-timing">Clocking &amp; Timing</a></li>
+  </ul></li>
+  <li><a href="#mcu-design-details" id="toc-mcu-design-details" class="nav-link" data-scroll-target="#mcu-design-details">MCU Design Details</a>
+  <ul class="collapse">
+  <li><a href="#random-piece-generation" id="toc-random-piece-generation" class="nav-link" data-scroll-target="#random-piece-generation">Random Piece Generation</a></li>
+  <li><a href="#controller-interface" id="toc-controller-interface" class="nav-link" data-scroll-target="#controller-interface">Controller Interface</a></li>
+  <li><a href="#communication-bridge" id="toc-communication-bridge" class="nav-link" data-scroll-target="#communication-bridge">Communication Bridge</a></li>
+  <li><a href="#progression-logic-excellency" id="toc-progression-logic-excellency" class="nav-link" data-scroll-target="#progression-logic-excellency">Progression Logic (Excellency)</a></li>
+  </ul></li>
+  <li><a href="#budget" id="toc-budget" class="nav-link" data-scroll-target="#budget">Budget</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#work-distribution" id="toc-work-distribution" class="nav-link" data-scroll-target="#work-distribution">Work Distribution</a></li>
   </ul>
 </nav>
     </div>
@@ -162,14 +180,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4</h1>
+<h1 class="title">Hardware Tetris Project Proposal</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kaden Cassidy and Noah Fotenos </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 16, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -179,49 +209,257 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, the datasheet and reference manual for the STM32L432KC were used to create function to drive GPIO output at a desired PWM frequency and duty cycle for specified lengths of time. This allowed a speaker to be driven to the tune of a melody</p>
-</section>
-<section id="design" class="level2">
-<h2 class="anchored" data-anchor-id="design">Design</h2>
-<p>This lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these peripherals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.</p>
-<p>ARR and PSC values for the timers were chosen to be fixed for “wait” delays as 0.01ms of precession was adequate, but a dynamic algorithm was used for PWM frequency to achieve target accuracy of 1% as confirmed in the table below:</p>
+<section id="project-description-and-overview" class="level1">
+<h1>Project Description and Overview</h1>
+<p>Our project implements the classic game <strong>Tetris</strong> directly in hardware using an <strong>FPGA</strong> as the game engine and a <strong>microcontroller (MCU)</strong> as a peripheral co-processor. The FPGA handles core game logic and VGA display output, while the MCU manages higher-level logic such as random block generation and controller input translation.</p>
+<p>We plan to leverage the FPGA for deterministic, processing of visual and game logic while using the MCU for tasks that benefit from flexibility, such as pseudo-random number generation and USB input handling.</p>
+<p>Gameplay will be displayed on a <strong>VGA monitor</strong> at refresh rates exceeding <strong>20 Hz</strong> with no flicker or ghosting. The FPGA’s internal memory will maintain the game state and render directly to VGA timing signals. The MCU will periodically supply the FPGA with new pieces and player inputs over a bus interface.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/NoteErrorTable.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 1: Errors of notes within target range</figcaption>
+<p><img src="images/block_diagram.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Block Diagram with all electrical components</figcaption>
 </figure>
 </div>
+<hr>
 </section>
-<section id="technical-documentation" class="level2">
-<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
-<p>The source code for the project can be found in the associated <a href="https://github.com/jacassidy/E155_Lab4">Github repository</a>.</p>
+<section id="proficiency-goals" class="level1">
+<h1>Proficiency Goals</h1>
+<ul>
+<li>Display updates at &gt;20 Hz<br>
+</li>
+<li>Display does not flicker<br>
+</li>
+<li>Display does not ghost between frames<br>
+</li>
+<li>Blocks clear at completed lines and update correctly<br>
+</li>
+<li>Blocks fall at standard rate<br>
+</li>
+<li>New random blocks appear once the previous block settles<br>
+</li>
+<li>Game boundaries prevent invalid movement<br>
+</li>
+<li>No visibly obvious bugs<br>
+</li>
+<li>Player can control piece movement with button input</li>
+</ul>
+<hr>
 </section>
-<section id="schematic" class="level2">
-<h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/schematic.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Figure 2: Schematic of amplifier for speaker</figcaption>
-</figure>
-</div>
-<p>The schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume.</p>
+<section id="excellency-goals" class="level1">
+<h1>Excellency Goals</h1>
+<ul>
+<li>Game speeds up progressively<br>
+</li>
+<li>USB controller used to play game<br>
+</li>
+<li>Block rotation implemented<br>
+</li>
+<li>Controller operates in “arcade mode”<br>
+</li>
+<li>Hard drop implemented<br>
+</li>
+<li>Next piece preview displayed</li>
+</ul>
+<hr>
 </section>
-<section id="results-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
-<p>I was able to successfully complete the entire lab with everything functioning correctly.</p>
+<section id="fpga-design-details" class="level1">
+<h1>FPGA Design Details</h1>
+<p>The FPGA implements a <strong>hardware Tetris engine</strong> consisting of the following modules:</p>
+<section id="vga-controller" class="level3">
+<h3 class="anchored" data-anchor-id="vga-controller">VGA Controller</h3>
+<p>Generates 640×480 @ 60 Hz timing signals and color data from block map memory.</p>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>As briefly stated before this lab gave a lot of perspective of what is in the technical documents associated with a processor and how best to navigate them. Starting from high level diagrams and identifying signals desired proved incredibly useful for then narrowing down and deciding which registers to assign values to to enable peripherals. This lab excites me for what these processors are capable of doing and I hope I can push the limits of the hardware effectively in the future.</p>
-<p>This lab took me 10 hours.</p>
+<section id="block-map-memory" class="level3">
+<h3 class="anchored" data-anchor-id="block-map-memory">Block Map Memory</h3>
+<p>Game state stored in on-chip <strong>SRAM</strong>.</p>
 </section>
-<section id="ai-prototype-summary" class="level2">
-<h2 class="anchored" data-anchor-id="ai-prototype-summary">AI Prototype Summary</h2>
-<p>In this lab I analyzed giving Chat GPT 5 the reference manual and datasheet and asked it what it would take to create PWM on the GPIO</p>
-<p><a href="https://chatgpt.com/share/68dd1067-184c-8012-81c9-e67a6dd59985">Link to transcript</a></p>
-<p>As a document search assistant, it worked well: it pulled timer features, AF pin tables, and register maps from the datasheet and programming manual quickly. Compared to HDL generation tasks in earlier prototypes, it was arguably more useful here—because the STM32 manuals are dense and Ctrl-F isn’t always enough. For Verilog generation it’s hit-or-miss, but for navigating big ST manuals it’s a strong accelerant.</p>
+<section id="piece-logic" class="level3">
+<h3 class="anchored" data-anchor-id="piece-logic">Piece Logic</h3>
+<p>Determines piece movement, collision detection, and line clears for each frame.</p>
+</section>
+<section id="fsm-game-controller" class="level3">
+<h3 class="anchored" data-anchor-id="fsm-game-controller">FSM Game Controller</h3>
+<p>Controls falling timing, piece locking, and score tracking.</p>
+</section>
+<section id="mcu-interface-module" class="level3">
+<h3 class="anchored" data-anchor-id="mcu-interface-module">MCU Interface Module</h3>
+<p>Implements a simple <strong>SPI slave</strong> interface to receive player inputs (left, right, rotate, drop) and new piece identifiers from the MCU.</p>
+</section>
+<section id="clocking-timing" class="level3">
+<h3 class="anchored" data-anchor-id="clocking-timing">Clocking &amp; Timing</h3>
+<p>Uses a <strong>25 MHz</strong> system clock for VGA synchronization and deterministic updates at &gt;20 Hz refresh rate.</p>
+<hr>
+</section>
+</section>
+<section id="mcu-design-details" class="level1">
+<h1>MCU Design Details</h1>
+<p>The MCU acts as an <strong>intelligent peripheral</strong>, responsible for higher-level coordination:</p>
+<section id="random-piece-generation" class="level3">
+<h3 class="anchored" data-anchor-id="random-piece-generation">Random Piece Generation</h3>
+<p>Implements a pseudo-random sequence ensuring fair block distribution.</p>
+</section>
+<section id="controller-interface" class="level3">
+<h3 class="anchored" data-anchor-id="controller-interface">Controller Interface</h3>
+<p>Reads inputs from buttons or a USB gamepad and translates them into movement commands.</p>
+</section>
+<section id="communication-bridge" class="level3">
+<h3 class="anchored" data-anchor-id="communication-bridge">Communication Bridge</h3>
+<p>Uses <strong>SPI</strong> or <strong>UART</strong> to send player inputs and new-piece data to the FPGA.</p>
+</section>
+<section id="progression-logic-excellency" class="level3">
+<h3 class="anchored" data-anchor-id="progression-logic-excellency">Progression Logic (Excellency)</h3>
+<p>Optionally increases drop speed, handles “arcade mode,” and shows the “next piece” preview by pre-sending upcoming block data.</p>
+<p>A small task loop coordinates controller input polling and data buffering.<br>
+An interrupt will be used to request data from the MCU.</p>
+<hr>
+</section>
+</section>
+<section id="budget" class="level1">
+<h1>Budget</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Quantity</th>
+<th>Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VGA Breakout</td>
+<td>1×</td>
+<td>$14.26</td>
+<td>Purchased</td>
+</tr>
+<tr class="even">
+<td>GameCube Controller</td>
+<td>1×</td>
+<td>$12.00</td>
+<td>Purchased</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>—</td>
+<td><strong>$26.26</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>STM32 Nucleo-32 MCU</td>
+<td>1×</td>
+<td>Have</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>UPduino iCE40 FPGA</td>
+<td>1×</td>
+<td>Have</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1000 ft Wire</td>
+<td>1×</td>
+<td>Stockroom</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>VGA Display</td>
+<td>1×</td>
+<td>Borrowed (Xavier)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="calculations" class="level1">
+<h1>Calculations</h1>
+<ul>
+<li><strong>SVGA</strong> requires 40 MHz for 800×600.<br>
+The FPGA will divide the clock by 2 to achieve standard timing.</li>
+</ul>
+<hr>
+</section>
+<section id="schedule" class="level1">
+<h1>Schedule</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Task</th>
+<th>Hours</th>
+<th>Lead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1 (Start 10/27)</strong></td>
+<td>Project demo setup</td>
+<td>2 h</td>
+<td>Both</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>VGA implementation</td>
+<td>15 h +</td>
+<td>Kaden</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MCU–FPGA link</td>
+<td>4 h +</td>
+<td>Noah</td>
+</tr>
+<tr class="even">
+<td><strong>2</strong></td>
+<td>FPGA game shifter</td>
+<td>10 h +</td>
+<td>Noah</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>MCU randomization + USB logic</td>
+<td>10 h +</td>
+<td>Kaden</td>
+</tr>
+<tr class="even">
+<td><strong>3</strong></td>
+<td>Finish game (Proficiency demo)</td>
+<td>3 h +</td>
+<td>Both</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Demo presentation</td>
+<td>2 h +</td>
+<td>Both</td>
+</tr>
+<tr class="even">
+<td><strong>4</strong></td>
+<td>Begin Excellency work</td>
+<td>5 h +</td>
+<td>Both</td>
+</tr>
+<tr class="odd">
+<td><strong>5</strong></td>
+<td>Debug</td>
+<td>10 h +</td>
+<td>Both</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Final presentation</td>
+<td>2 h +</td>
+<td>Both</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="work-distribution" class="level1">
+<h1>Work Distribution</h1>
+<p>We plan on distributing work within each project aspect. Most of the time, we will work together in the lab; however, for aspects more appropriate for individual focus, we will assign tasks based on each member’s strengths and experience.</p>
+<hr>
 
 
 </section>

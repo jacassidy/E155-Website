@@ -1,206 +1,66 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E155 Portfolio",
+    "objectID": "project/proposal/proposal.html",
+    "href": "project/proposal/proposal.html",
+    "title": "Hardware Tetris Project Proposal",
     "section": "",
-    "text": "Kaden Cassidy is an “Applied Mathematics in Computation” major at Harvey Mudd College. He works in the VLSI Lab as a Clay-Wolken fellow where he is creating the next generation of ceritifcation and hardware implementation of the RISCV Vector Extension for RISCV processors. He also competes for the CMS Track & Field team in the hammer, shotput and discus throw."
+    "text": "Project Description and Overview\nOur project implements the classic game Tetris directly in hardware using an FPGA as the game engine and a microcontroller (MCU) as a peripheral co-processor. The FPGA handles core game logic and VGA display output, while the MCU manages higher-level logic such as random block generation and controller input translation.\nWe plan to leverage the FPGA for deterministic, processing of visual and game logic while using the MCU for tasks that benefit from flexibility, such as pseudo-random number generation and USB input handling.\nGameplay will be displayed on a VGA monitor at refresh rates exceeding 20 Hz with no flicker or ghosting. The FPGA’s internal memory will maintain the game state and render directly to VGA timing signals. The MCU will periodically supply the FPGA with new pieces and player inputs over a bus interface.\n\n\n\nFigure 1: Block Diagram with all electrical components\n\n\n\n\n\nProficiency Goals\n\nDisplay updates at &gt;20 Hz\n\nDisplay does not flicker\n\nDisplay does not ghost between frames\n\nBlocks clear at completed lines and update correctly\n\nBlocks fall at standard rate\n\nNew random blocks appear once the previous block settles\n\nGame boundaries prevent invalid movement\n\nNo visibly obvious bugs\n\nPlayer can control piece movement with button input\n\n\n\n\nExcellency Goals\n\nGame speeds up progressively\n\nUSB controller used to play game\n\nBlock rotation implemented\n\nController operates in “arcade mode”\n\nHard drop implemented\n\nNext piece preview displayed\n\n\n\n\nFPGA Design Details\nThe FPGA implements a hardware Tetris engine consisting of the following modules:\n\nVGA Controller\nGenerates 640×480 @ 60 Hz timing signals and color data from block map memory.\n\n\nBlock Map Memory\nGame state stored in on-chip SRAM.\n\n\nPiece Logic\nDetermines piece movement, collision detection, and line clears for each frame.\n\n\nFSM Game Controller\nControls falling timing, piece locking, and score tracking.\n\n\nMCU Interface Module\nImplements a simple SPI slave interface to receive player inputs (left, right, rotate, drop) and new piece identifiers from the MCU.\n\n\nClocking & Timing\nUses a 25 MHz system clock for VGA synchronization and deterministic updates at &gt;20 Hz refresh rate.\n\n\n\n\nMCU Design Details\nThe MCU acts as an intelligent peripheral, responsible for higher-level coordination:\n\nRandom Piece Generation\nImplements a pseudo-random sequence ensuring fair block distribution.\n\n\nController Interface\nReads inputs from buttons or a USB gamepad and translates them into movement commands.\n\n\nCommunication Bridge\nUses SPI or UART to send player inputs and new-piece data to the FPGA.\n\n\nProgression Logic (Excellency)\nOptionally increases drop speed, handles “arcade mode,” and shows the “next piece” preview by pre-sending upcoming block data.\nA small task loop coordinates controller input polling and data buffering.\nAn interrupt will be used to request data from the MCU.\n\n\n\n\nBudget\n\n\n\nItem\nQuantity\nCost\nNotes\n\n\n\n\nVGA Breakout\n1×\n$14.26\nPurchased\n\n\nGameCube Controller\n1×\n$12.00\nPurchased\n\n\nTotal\n—\n$26.26\n\n\n\nSTM32 Nucleo-32 MCU\n1×\nHave\n\n\n\nUPduino iCE40 FPGA\n1×\nHave\n\n\n\n1000 ft Wire\n1×\nStockroom\n\n\n\nVGA Display\n1×\nBorrowed (Xavier)\n\n\n\n\n\n\n\nCalculations\n\nSVGA requires 40 MHz for 800×600.\nThe FPGA will divide the clock by 2 to achieve standard timing.\n\n\n\n\nSchedule\n\n\n\nWeek\nTask\nHours\nLead\n\n\n\n\n1 (Start 10/27)\nProject demo setup\n2 h\nBoth\n\n\n\nVGA implementation\n15 h +\nKaden\n\n\n\nMCU–FPGA link\n4 h +\nNoah\n\n\n2\nFPGA game shifter\n10 h +\nNoah\n\n\n\nMCU randomization + USB logic\n10 h +\nKaden\n\n\n3\nFinish game (Proficiency demo)\n3 h +\nBoth\n\n\n\nDemo presentation\n2 h +\nBoth\n\n\n4\nBegin Excellency work\n5 h +\nBoth\n\n\n5\nDebug\n10 h +\nBoth\n\n\n\nFinal presentation\n2 h +\nBoth\n\n\n\n\n\n\nWork Distribution\nWe plan on distributing work within each project aspect. Most of the time, we will work together in the lab; however, for aspects more appropriate for individual focus, we will assign tasks based on each member’s strengths and experience."
   },
   {
-    "objectID": "labs/lab3/lab3.html",
-    "href": "labs/lab3/lab3.html",
-    "title": "Lab 3",
+    "objectID": "labs/lab4/lab4.html",
+    "href": "labs/lab4/lab4.html",
+    "title": "Lab 4",
     "section": "",
-    "text": "In this lab, the modules from the previous lab were used to drive two seven-segment displays with the last two key presses from a keypad. Synchronizers, switch debouncers and more time-multiplexing was used to register a keypad press as a single event and only allow one key press at a time."
+    "text": "In this lab, the datasheet and reference manual for the STM32L432KC were used to create function to drive GPIO output at a desired PWM frequency and duty cycle for specified lengths of time. This allowed a speaker to be driven to the tune of a melody"
   },
   {
-    "objectID": "labs/lab3/lab3.html#introduction",
-    "href": "labs/lab3/lab3.html#introduction",
-    "title": "Lab 3",
+    "objectID": "labs/lab4/lab4.html#introduction",
+    "href": "labs/lab4/lab4.html#introduction",
+    "title": "Lab 4",
     "section": "",
-    "text": "In this lab, the modules from the previous lab were used to drive two seven-segment displays with the last two key presses from a keypad. Synchronizers, switch debouncers and more time-multiplexing was used to register a keypad press as a single event and only allow one key press at a time."
+    "text": "In this lab, the datasheet and reference manual for the STM32L432KC were used to create function to drive GPIO output at a desired PWM frequency and duty cycle for specified lengths of time. This allowed a speaker to be driven to the tune of a melody"
   },
   {
-    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
-    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
-    "title": "Lab 3",
-    "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\n\n\n\nFigure 1: FSM state diagrams\n\n\n\n\n\nFigure 2: FSM state transition table\n\n\nThe on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A clock divider is then used to reduce the clock in several key ways. The original clock is reduced by 200000 to create the signal used to display the two previous digits on 2 seven-segment displays with only 9 wires as achieved in the previous lab. The original clock is also reduced by 2000 to scan the rows of the keypad, and the row clock is then reduced by another 16 times to create the column clock which is then used to scan the columns. These clocks drive a series of flip flops with adders connected to themselves to iterate over the columns and rows of the keypad. These counts are used to mux the switches into a single switch debouncer, and when the switch has registered a press, all counters stop until the switch is released. A keypress is registered by first passing through a synchronizer to stablize the input, then through a switch debouncer. The switch debouncer functions by moving to a “Pressed” state upon a high input signal, but will only move to a “Released” state after registering no high input signal for 100000 clock cycles.\nThis method of switch debouncing was chosen because it provides near immediate on-press stimulus to the circuit, and has no noticeable drawbacks for the keypad used. It is important to consider that this design only works effectively because there is no debouncing required for when the switch is released. If in application, there is often caseonarios where two switches are being pressed at the same time or that the switch has “phantom presses” or needs to be debounced on release, another design method should be chosen.\nSome other example switch control mechanisms would be to have a 2 way gated press/release meaning a count has to be hit before a press is registered as well. This comes with the tradeoff of being slower to register a key press, but would function very well in a situation with “phantom presses” or the need for release debouncing. Another method would to have a buffer for each switch and when the buffer is full a key press is registered, this allows the advantage of selecting multiple keys at the same time but would require substantially more hardware to be effective."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#technical-documentation",
-    "href": "labs/lab3/lab3.html#technical-documentation",
-    "title": "Lab 3",
-    "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#block-diagram",
-    "href": "labs/lab3/lab3.html#block-diagram",
-    "title": "Lab 3",
-    "section": "Block Diagram",
-    "text": "Block Diagram\n\n\n\nFigure 3: Block diagram of the SystemVerilog written for this lab\n\n\nThe block diagram gives a high-level schematic of the overall design. The top module include the high-speed oscillator, keypad scanner, and dual seven-segment display driver as well as an adder used to count new key presses."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#schematic",
-    "href": "labs/lab3/lab3.html#schematic",
-    "title": "Lab 3",
-    "section": "Schematic",
-    "text": "Schematic\n\n\n\nFigure 4: Schematic of the breadboard circuit for the seven segment display\n\n\nThe schematic gives the design of the circuit breadboarded, the general idea is that the two common terminals of the seven-segment displays are connected and then connected through a 330 ohm resistor to an FPGA pin. The power terminal for each display is connected to the collector of a transistor where the base is connected to an FPGA pin through a 3k resistor. The emitter is then connected to the 3v3 line and this setup allows for 9 pins to control 2 seven-segment displays.\nThe keypad rows are connected as inputs with external 200k pullup resistors for redundancy and the columns are connected directly to FPGA pins to be driven"
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#results-and-discussion",
-    "href": "labs/lab3/lab3.html#results-and-discussion",
-    "title": "Lab 3",
-    "section": "Results and Discussion",
-    "text": "Results and Discussion\n\n\n\nFigure 5: Final board design all wired\n\n\nI was able to successfully complete the entire lab with everything functioning correctly. The system is quick and reliable, and I am very satisfied with the product."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#testbench-simulation",
-    "href": "labs/lab3/lab3.html#testbench-simulation",
-    "title": "Lab 3",
-    "section": "Testbench Simulation",
-    "text": "Testbench Simulation\n\n\n\nFigure 6: Waveforms of testbench covering clk_counter module\n\n\n\n\n\nFigure 7: Testbench of clk_counter successfully completing all test cases\n\n\n\n\n\nFigure 8: Waveforms of testbench covering debouncer module\n\n\n\n\n\nFigure 9: Testbench of debouncer successfully completing all test cases\n\n\n\n\n\nFigure 10: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 11: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 12: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 13: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 14: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 15: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 16: Waveforms of testbench covering keypad module\n\n\n\n\n\nFigure 17: Testbench of keypad successfully completing\n\n\nThe testbenches were used to confirm that the clk counter correctly triggers, the debouncer properly debounces, the dual segment display correctly displays both values, the synchronizer correctly passes through the values, and that the debugging leds in the top module work as expected."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#conclusion",
-    "href": "labs/lab3/lab3.html#conclusion",
-    "title": "Lab 3",
-    "section": "Conclusion",
-    "text": "Conclusion\nTo complete this lab, I began by wiring the breadboard carefully. I then wrote the Verilog modules and testbenches to test any I had modified or created. I ended up making several simple mistakes while writing the Verilog for this project that were difficult to debug. In the future I will begin by more carefully reviewing the net list diagram before attempting debugging in another manner as the mistakes I made were very obvious in this diagram. This lab took me 10 hours to complete."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#ai-prototype-summary",
-    "href": "labs/lab3/lab3.html#ai-prototype-summary",
-    "title": "Lab 3",
-    "section": "AI Prototype Summary",
-    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 two different types of prompts to complete the lab: 1 shot, and multiple steps.\nLink to 1 shot transcript\nLink to multiple step transcript\nConsidering the two side by side I think there are advantages to each. The advantage of the 1 shot is allowed the most flexibility of design, for someone who isn’t sure about the best approach to go with, it can optimize at a higher level before getting into the specifics of a design. The disadvantage, and the advantage of the multi-step method, is if one already has a design structure in mind and simply wants the chat bot to create this vision, the 1 shot method doesn’t follow that closely, while the multiple step method allows for a specific design of one module that is then integrated by further modules generated.\nFor a hardware designer I would recommend the multi-step process as it forces the designer to already have a clear vision of the hardware, which is important to have before writing code. While I could understand the general scheme of what the LLM was trying to do, it was very difficult to envision the hardware which I believe is strongly counterproductive to good hardware design."
-  },
-  {
-    "objectID": "labs/lab5/lab5.html",
-    "href": "labs/lab5/lab5.html",
-    "title": "Lab 5",
-    "section": "",
-    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
-  },
-  {
-    "objectID": "labs/lab5/lab5.html#introduction",
-    "href": "labs/lab5/lab5.html#introduction",
-    "title": "Lab 5",
-    "section": "",
-    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
-  },
-  {
-    "objectID": "labs/lab5/lab5.html#design",
-    "href": "labs/lab5/lab5.html#design",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#design",
+    "href": "labs/lab4/lab4.html#design",
+    "title": "Lab 4",
     "section": "Design",
-    "text": "Design\nThis lab required reading through the reference manual, programming manual and data sheet to debug interrupt code and successfully get two interupts working in parallel and interacting with one another."
+    "text": "Design\nThis lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these peripherals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.\nARR and PSC values for the timers were chosen to be fixed for “wait” delays as 0.01ms of precession was adequate, but a dynamic algorithm was used for PWM frequency to achieve target accuracy of 1% as confirmed in the table below:\n\n\n\nFigure 1: Errors of notes within target range"
   },
   {
-    "objectID": "labs/lab5/lab5.html#technical-documentation",
-    "href": "labs/lab5/lab5.html#technical-documentation",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#technical-documentation",
+    "href": "labs/lab4/lab4.html#technical-documentation",
+    "title": "Lab 4",
     "section": "Technical Documentation",
     "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
   },
   {
-    "objectID": "labs/lab5/lab5.html#schematic",
-    "href": "labs/lab5/lab5.html#schematic",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#schematic",
+    "href": "labs/lab4/lab4.html#schematic",
+    "title": "Lab 4",
     "section": "Schematic",
-    "text": "Schematic\n\n\n\nFigure 1: Schematic of circuit\n\n\nThe schematic gives the design of the circuit breadboarded, essentiall the motor is just connected to power and to the MCU."
+    "text": "Schematic\n\n\n\nFigure 2: Schematic of amplifier for speaker\n\n\nThe schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume."
   },
   {
-    "objectID": "labs/lab5/lab5.html#results-and-discussion",
-    "href": "labs/lab5/lab5.html#results-and-discussion",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#results-and-discussion",
+    "href": "labs/lab4/lab4.html#results-and-discussion",
+    "title": "Lab 4",
     "section": "Results and Discussion",
     "text": "Results and Discussion\nI was able to successfully complete the entire lab with everything functioning correctly."
   },
   {
-    "objectID": "labs/lab5/lab5.html#conclusion",
-    "href": "labs/lab5/lab5.html#conclusion",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#conclusion",
+    "href": "labs/lab4/lab4.html#conclusion",
+    "title": "Lab 4",
     "section": "Conclusion",
-    "text": "Conclusion\nThis lab taught the general basics of what interrupts look like internally on the MCU and what the range of functionality is regarding interrupts. It also taught good habits for management of interrupts and how to integrate them to a synchronous loop.\nThis lab took me 10 hours."
+    "text": "Conclusion\nAs briefly stated before this lab gave a lot of perspective of what is in the technical documents associated with a processor and how best to navigate them. Starting from high level diagrams and identifying signals desired proved incredibly useful for then narrowing down and deciding which registers to assign values to to enable peripherals. This lab excites me for what these processors are capable of doing and I hope I can push the limits of the hardware effectively in the future.\nThis lab took me 10 hours."
   },
   {
-    "objectID": "labs/lab5/lab5.html#ai-prototype-summary",
-    "href": "labs/lab5/lab5.html#ai-prototype-summary",
-    "title": "Lab 5",
+    "objectID": "labs/lab4/lab4.html#ai-prototype-summary",
+    "href": "labs/lab4/lab4.html#ai-prototype-summary",
+    "title": "Lab 4",
     "section": "AI Prototype Summary",
-    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 an open-ended prompt to create interupt based motor encoder monitor for the STM32l432KC\nLink to transcript\nAlthough the lab restricted us from using timer-based interrupts, the LLM’s generated solution—which leveraged the STM32L432KC’s hardware encoder mode on TIM2 (PA0/PA1)—seeming like a better solution than the required EXTI interrupt approach. It did not immediately compile but I liked the ideas behind it and would say in this case, the LLM was very helpful as a starting base for doing the most conventional and effective approach."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html",
-    "href": "labs/lab1/lab1.html",
-    "title": "Lab 1",
-    "section": "",
-    "text": "In this lab, simple SystemVerilog modules were designed to control a seven-segment display as well as blink an LED at 2.4Hz. The design utilized onboard switches to designate the hexidecimal number to display as well as the onboard 48MHz high-speed oscillator to generate the 2.4Hz signal."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#introduction",
-    "href": "labs/lab1/lab1.html#introduction",
-    "title": "Lab 1",
-    "section": "",
-    "text": "In this lab, simple SystemVerilog modules were designed to control a seven-segment display as well as blink an LED at 2.4Hz. The design utilized onboard switches to designate the hexidecimal number to display as well as the onboard 48MHz high-speed oscillator to generate the 2.4Hz signal."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#design-and-testing-methodology",
-    "href": "labs/lab1/lab1.html#design-and-testing-methodology",
-    "title": "Lab 1",
-    "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThe on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A register is then used to store the current count, with the clock signal connected to the oscillator and D connected to Q through a 27 bit adder which adds 1 to the current value. A series of AND gates then check when the count has reached 20000000 and toggle a flop. This flop signal is then used to drive the LED since it digitally oscillates at 2.4Hz.\nThe seven segment display and onboard LEDs are controlled via combinational logic and their functionality is confirmed by testbenches that consider all 2^4 input permutations. The seven segment display is powered by a 3v3 line where each LED drains through a resistor to a pin on the FPGA."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#technical-documentation",
-    "href": "labs/lab1/lab1.html#technical-documentation",
-    "title": "Lab 1",
-    "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#block-diagram",
-    "href": "labs/lab1/lab1.html#block-diagram",
-    "title": "Lab 1",
-    "section": "Block Diagram",
-    "text": "Block Diagram\n\n\n\nFigure 1: Block diagram of the SystemVerilog written for this lab\n\n\nThe block diagram gives a high-level schematic of the overall design. The top module include the high-speed oscillator as well as a divider and the combinational logic used to drive the leds."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#schematic",
-    "href": "labs/lab1/lab1.html#schematic",
-    "title": "Lab 1",
-    "section": "Schematic",
-    "text": "Schematic\n\n\n\nFigure 2: Schematic of the breadboard circuit for the seven segment display\n\n\nThe schematic gives the design of the circuit breadboarded, the general idea being that the 3v3 line is connected to a common terminal on the seven segment display, then each LED drains through a 180 ohm resistor to an FPGA pin. If the pin is high, there is no voltage difference and no current flows, when the pin goes low the LED drains through the pin to ground. A resistance of 180 ohms was chosen as 7.5mA was identified as an optimal current from the datasheet, and the LED is expected to have a 1.95v drop at this current. Thus (3.3-1.95) / 7.5mA = 180 ohms."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#results-and-discussion",
-    "href": "labs/lab1/lab1.html#results-and-discussion",
-    "title": "Lab 1",
-    "section": "Results and Discussion",
-    "text": "Results and Discussion\n\n\n\nFigure 3: Final board design all wired\n\n\nI was able to successfully complete the entire lab with everything functioning correctly. The system is quick and reliable, and I am very satisfied with the product."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#testbench-simulation",
-    "href": "labs/lab1/lab1.html#testbench-simulation",
-    "title": "Lab 1",
-    "section": "Testbench Simulation",
-    "text": "Testbench Simulation\n\n\n\nFigure 4: Waveforms of testbench covering “top” module\n\n\n\n\n\nFigure 5: Testbench of top successfully completing all test cases\n\n\n\n\n\nFigure 6: Waveforms of testbench covering “seven_segment_display” module\n\n\n\n\n\nFigure 7: Testbench of seven-segment display successfully completing all test cases\n\n\nThe testbenches were used to confirm that the LEDs behave properly in all possible permutations of the 4 switches used to control them. Getting the testbench to run also proved useful for debugging before uploading to the FPGA."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#conclusion",
-    "href": "labs/lab1/lab1.html#conclusion",
-    "title": "Lab 1",
-    "section": "Conclusion",
-    "text": "Conclusion\nTo complete this lab, first the test board had to be soldered in its entirety including many SMD components. A simple test program was then used to debug the programming software and get used to the workflow for using the FPGA in a development environment. SystemVerilog code was then written to generate a 2.4Hz digitally oscillating signal as well as a combinational logic link between 4 onboard switches and an externally wired seven segment display. The seven segment display was then wired on a breadboard to confirm hardware functionality. This lab took me about 10 hours."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#ai-prototype-summary",
-    "href": "labs/lab1/lab1.html#ai-prototype-summary",
-    "title": "Lab 1",
-    "section": "AI Prototype Summary",
-    "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nWrite SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.\n\nIt responded with this\nWhen put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.\nI did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.\nOverall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected."
+    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 the reference manual and datasheet and asked it what it would take to create PWM on the GPIO\nLink to transcript\nAs a document search assistant, it worked well: it pulled timer features, AF pin tables, and register maps from the datasheet and programming manual quickly. Compared to HDL generation tasks in earlier prototypes, it was arguably more useful here—because the STM32 manuals are dense and Ctrl-F isn’t always enough. For Verilog generation it’s hit-or-miss, but for navigating big ST manuals it’s a strong accelerant."
   },
   {
     "objectID": "labs/lab2/lab2.html",
@@ -273,59 +133,206 @@
     "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nCreate a series of system verilog modules that time multiplex between two seven segment displays using a couple of modules I have already made: seven_segment_decoder(.value, .display) divider #(param div_count) (clk, reset, div_clk) HSOSC(outputs: clk) Inputs to the module can be, reset, display_select, input_value also output a binary sum of the two numbers\n\nIt responded with this\nWhen put into a new project it failed once again because it was using the incorrect library to synthesize the high-speed oscillator module. After some reading through it was able to compile but the module was cluttered with strange syntax, and not very readable in terms of variable names and organization.\nOne example of a strange choice it made was to include the summing login in an always block instead of an assign. This makes me think its running off a reference of older Verilog code rather than common practice nowadays.\nI would give this result a 6.5 out of 10 becuase it does seem to function but I do not like the formatting so if I would then have to modify the Verilog for further functionality, I would have rather written it myself than using its reference."
   },
   {
-    "objectID": "labs/lab4/lab4.html",
-    "href": "labs/lab4/lab4.html",
-    "title": "Lab 4",
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1",
     "section": "",
-    "text": "In this lab, the datasheet and reference manual for the STM32L432KC were used to create function to drive GPIO output at a desired PWM frequency and duty cycle for specified lengths of time. This allowed a speaker to be driven to the tune of a melody"
+    "text": "In this lab, simple SystemVerilog modules were designed to control a seven-segment display as well as blink an LED at 2.4Hz. The design utilized onboard switches to designate the hexidecimal number to display as well as the onboard 48MHz high-speed oscillator to generate the 2.4Hz signal."
   },
   {
-    "objectID": "labs/lab4/lab4.html#introduction",
-    "href": "labs/lab4/lab4.html#introduction",
-    "title": "Lab 4",
+    "objectID": "labs/lab1/lab1.html#introduction",
+    "href": "labs/lab1/lab1.html#introduction",
+    "title": "Lab 1",
     "section": "",
-    "text": "In this lab, the datasheet and reference manual for the STM32L432KC were used to create function to drive GPIO output at a desired PWM frequency and duty cycle for specified lengths of time. This allowed a speaker to be driven to the tune of a melody"
+    "text": "In this lab, simple SystemVerilog modules were designed to control a seven-segment display as well as blink an LED at 2.4Hz. The design utilized onboard switches to designate the hexidecimal number to display as well as the onboard 48MHz high-speed oscillator to generate the 2.4Hz signal."
   },
   {
-    "objectID": "labs/lab4/lab4.html#design",
-    "href": "labs/lab4/lab4.html#design",
-    "title": "Lab 4",
-    "section": "Design",
-    "text": "Design\nThis lab required a lot of reading and deep understanding of microarchitecture to setup the GPIO and timer functionality since open source libraries were not allowed. Searching through the datasheet for all requirements to enable these peripherals gave a lot of perspective of both what the processor is capable of and how to best navigate these large documents.\nARR and PSC values for the timers were chosen to be fixed for “wait” delays as 0.01ms of precession was adequate, but a dynamic algorithm was used for PWM frequency to achieve target accuracy of 1% as confirmed in the table below:\n\n\n\nFigure 1: Errors of notes within target range"
+    "objectID": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "href": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "title": "Lab 1",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nThe on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A register is then used to store the current count, with the clock signal connected to the oscillator and D connected to Q through a 27 bit adder which adds 1 to the current value. A series of AND gates then check when the count has reached 20000000 and toggle a flop. This flop signal is then used to drive the LED since it digitally oscillates at 2.4Hz.\nThe seven segment display and onboard LEDs are controlled via combinational logic and their functionality is confirmed by testbenches that consider all 2^4 input permutations. The seven segment display is powered by a 3v3 line where each LED drains through a resistor to a pin on the FPGA."
   },
   {
-    "objectID": "labs/lab4/lab4.html#technical-documentation",
-    "href": "labs/lab4/lab4.html#technical-documentation",
-    "title": "Lab 4",
+    "objectID": "labs/lab1/lab1.html#technical-documentation",
+    "href": "labs/lab1/lab1.html#technical-documentation",
+    "title": "Lab 1",
     "section": "Technical Documentation",
     "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
   },
   {
-    "objectID": "labs/lab4/lab4.html#schematic",
-    "href": "labs/lab4/lab4.html#schematic",
-    "title": "Lab 4",
-    "section": "Schematic",
-    "text": "Schematic\n\n\n\nFigure 2: Schematic of amplifier for speaker\n\n\nThe schematic gives the design of the circuit breadboarded, an op-amp is used to boost the signal so that it can drive a speaker; a potentiometer is used to adjust volume."
+    "objectID": "labs/lab1/lab1.html#block-diagram",
+    "href": "labs/lab1/lab1.html#block-diagram",
+    "title": "Lab 1",
+    "section": "Block Diagram",
+    "text": "Block Diagram\n\n\n\nFigure 1: Block diagram of the SystemVerilog written for this lab\n\n\nThe block diagram gives a high-level schematic of the overall design. The top module include the high-speed oscillator as well as a divider and the combinational logic used to drive the leds."
   },
   {
-    "objectID": "labs/lab4/lab4.html#results-and-discussion",
-    "href": "labs/lab4/lab4.html#results-and-discussion",
-    "title": "Lab 4",
+    "objectID": "labs/lab1/lab1.html#schematic",
+    "href": "labs/lab1/lab1.html#schematic",
+    "title": "Lab 1",
+    "section": "Schematic",
+    "text": "Schematic\n\n\n\nFigure 2: Schematic of the breadboard circuit for the seven segment display\n\n\nThe schematic gives the design of the circuit breadboarded, the general idea being that the 3v3 line is connected to a common terminal on the seven segment display, then each LED drains through a 180 ohm resistor to an FPGA pin. If the pin is high, there is no voltage difference and no current flows, when the pin goes low the LED drains through the pin to ground. A resistance of 180 ohms was chosen as 7.5mA was identified as an optimal current from the datasheet, and the LED is expected to have a 1.95v drop at this current. Thus (3.3-1.95) / 7.5mA = 180 ohms."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#results-and-discussion",
+    "href": "labs/lab1/lab1.html#results-and-discussion",
+    "title": "Lab 1",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\n\n\nFigure 3: Final board design all wired\n\n\nI was able to successfully complete the entire lab with everything functioning correctly. The system is quick and reliable, and I am very satisfied with the product."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#testbench-simulation",
+    "href": "labs/lab1/lab1.html#testbench-simulation",
+    "title": "Lab 1",
+    "section": "Testbench Simulation",
+    "text": "Testbench Simulation\n\n\n\nFigure 4: Waveforms of testbench covering “top” module\n\n\n\n\n\nFigure 5: Testbench of top successfully completing all test cases\n\n\n\n\n\nFigure 6: Waveforms of testbench covering “seven_segment_display” module\n\n\n\n\n\nFigure 7: Testbench of seven-segment display successfully completing all test cases\n\n\nThe testbenches were used to confirm that the LEDs behave properly in all possible permutations of the 4 switches used to control them. Getting the testbench to run also proved useful for debugging before uploading to the FPGA."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#conclusion",
+    "href": "labs/lab1/lab1.html#conclusion",
+    "title": "Lab 1",
+    "section": "Conclusion",
+    "text": "Conclusion\nTo complete this lab, first the test board had to be soldered in its entirety including many SMD components. A simple test program was then used to debug the programming software and get used to the workflow for using the FPGA in a development environment. SystemVerilog code was then written to generate a 2.4Hz digitally oscillating signal as well as a combinational logic link between 4 onboard switches and an externally wired seven segment display. The seven segment display was then wired on a breadboard to confirm hardware functionality. This lab took me about 10 hours."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#ai-prototype-summary",
+    "href": "labs/lab1/lab1.html#ai-prototype-summary",
+    "title": "Lab 1",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nWhen giving Chat GPT 5 the following prompt:\n\nWrite SystemVerilog HDL to leverage the internal high speed oscillator in the Lattice UP5K FPGA and blink an LED at 2 Hz. Take full advantage of SystemVerilog syntax, for example, using logic instead of wire and reg.\n\nIt responded with this\nWhen put into a new project it failed because it was using the incorrect library to synthesize the high-speed oscillator module. With some corrections the HDL was able to be run, but the amount of mental effort and analytical thinking it took to diagnose, I preferred to have written the HDL used for my project on my own.\nI did not like the result it produced. Firstly it added a lot of bloat to the HDL where completely unnecessary; this included unnecessary long comments and an overall very large top module. I liked some of the ideas it produced, for example using a counter with multiplexers and flip-flops instead of an adder which was a more clever way to create this design. However, it did not put this into a separate module and, since the counter was very large, made it difficult to read and understand.\nOverall I would give it a 5 because it created some though provoking questions in terms of how to produce the design, but would not have been useful for creating an initial prototype. This was a rather counter-intuitive experience with AI to what is generally expected."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html",
+    "href": "labs/lab5/lab5.html",
+    "title": "Lab 5",
+    "section": "",
+    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#introduction",
+    "href": "labs/lab5/lab5.html#introduction",
+    "title": "Lab 5",
+    "section": "",
+    "text": "In this lab, interrupts are used to monitor a motor encoder to determine the rps with direction and handling edge cases."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#design",
+    "href": "labs/lab5/lab5.html#design",
+    "title": "Lab 5",
+    "section": "Design",
+    "text": "Design\nThis lab required reading through the reference manual, programming manual and data sheet to debug interrupt code and successfully get two interupts working in parallel and interacting with one another."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#technical-documentation",
+    "href": "labs/lab5/lab5.html#technical-documentation",
+    "title": "Lab 5",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#schematic",
+    "href": "labs/lab5/lab5.html#schematic",
+    "title": "Lab 5",
+    "section": "Schematic",
+    "text": "Schematic\n\n\n\nFigure 1: Schematic of circuit\n\n\nThe schematic gives the design of the circuit breadboarded, essentiall the motor is just connected to power and to the MCU."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#results-and-discussion",
+    "href": "labs/lab5/lab5.html#results-and-discussion",
+    "title": "Lab 5",
     "section": "Results and Discussion",
     "text": "Results and Discussion\nI was able to successfully complete the entire lab with everything functioning correctly."
   },
   {
-    "objectID": "labs/lab4/lab4.html#conclusion",
-    "href": "labs/lab4/lab4.html#conclusion",
-    "title": "Lab 4",
+    "objectID": "labs/lab5/lab5.html#conclusion",
+    "href": "labs/lab5/lab5.html#conclusion",
+    "title": "Lab 5",
     "section": "Conclusion",
-    "text": "Conclusion\nAs briefly stated before this lab gave a lot of perspective of what is in the technical documents associated with a processor and how best to navigate them. Starting from high level diagrams and identifying signals desired proved incredibly useful for then narrowing down and deciding which registers to assign values to to enable peripherals. This lab excites me for what these processors are capable of doing and I hope I can push the limits of the hardware effectively in the future.\nThis lab took me 10 hours."
+    "text": "Conclusion\nThis lab taught the general basics of what interrupts look like internally on the MCU and what the range of functionality is regarding interrupts. It also taught good habits for management of interrupts and how to integrate them to a synchronous loop.\nThis lab took me 10 hours."
   },
   {
-    "objectID": "labs/lab4/lab4.html#ai-prototype-summary",
-    "href": "labs/lab4/lab4.html#ai-prototype-summary",
-    "title": "Lab 4",
+    "objectID": "labs/lab5/lab5.html#ai-prototype-summary",
+    "href": "labs/lab5/lab5.html#ai-prototype-summary",
+    "title": "Lab 5",
     "section": "AI Prototype Summary",
-    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 the reference manual and datasheet and asked it what it would take to create PWM on the GPIO\nLink to transcript\nAs a document search assistant, it worked well: it pulled timer features, AF pin tables, and register maps from the datasheet and programming manual quickly. Compared to HDL generation tasks in earlier prototypes, it was arguably more useful here—because the STM32 manuals are dense and Ctrl-F isn’t always enough. For Verilog generation it’s hit-or-miss, but for navigating big ST manuals it’s a strong accelerant."
+    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 an open-ended prompt to create interupt based motor encoder monitor for the STM32l432KC\nLink to transcript\nAlthough the lab restricted us from using timer-based interrupts, the LLM’s generated solution—which leveraged the STM32L432KC’s hardware encoder mode on TIM2 (PA0/PA1)—seeming like a better solution than the required EXTI interrupt approach. It did not immediately compile but I liked the ideas behind it and would say in this case, the LLM was very helpful as a starting base for doing the most conventional and effective approach."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html",
+    "href": "labs/lab3/lab3.html",
+    "title": "Lab 3",
+    "section": "",
+    "text": "In this lab, the modules from the previous lab were used to drive two seven-segment displays with the last two key presses from a keypad. Synchronizers, switch debouncers and more time-multiplexing was used to register a keypad press as a single event and only allow one key press at a time."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#introduction",
+    "href": "labs/lab3/lab3.html#introduction",
+    "title": "Lab 3",
+    "section": "",
+    "text": "In this lab, the modules from the previous lab were used to drive two seven-segment displays with the last two key presses from a keypad. Synchronizers, switch debouncers and more time-multiplexing was used to register a keypad press as a single event and only allow one key press at a time."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "title": "Lab 3",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\n\n\n\nFigure 1: FSM state diagrams\n\n\n\n\n\nFigure 2: FSM state transition table\n\n\nThe on-board high-speed oscillator (HSOSC) from the iCE40 UltraPlus primitive library was used to generate a clock signal at 48 MHz. A clock divider is then used to reduce the clock in several key ways. The original clock is reduced by 200000 to create the signal used to display the two previous digits on 2 seven-segment displays with only 9 wires as achieved in the previous lab. The original clock is also reduced by 2000 to scan the rows of the keypad, and the row clock is then reduced by another 16 times to create the column clock which is then used to scan the columns. These clocks drive a series of flip flops with adders connected to themselves to iterate over the columns and rows of the keypad. These counts are used to mux the switches into a single switch debouncer, and when the switch has registered a press, all counters stop until the switch is released. A keypress is registered by first passing through a synchronizer to stablize the input, then through a switch debouncer. The switch debouncer functions by moving to a “Pressed” state upon a high input signal, but will only move to a “Released” state after registering no high input signal for 100000 clock cycles.\nThis method of switch debouncing was chosen because it provides near immediate on-press stimulus to the circuit, and has no noticeable drawbacks for the keypad used. It is important to consider that this design only works effectively because there is no debouncing required for when the switch is released. If in application, there is often caseonarios where two switches are being pressed at the same time or that the switch has “phantom presses” or needs to be debounced on release, another design method should be chosen.\nSome other example switch control mechanisms would be to have a 2 way gated press/release meaning a count has to be hit before a press is registered as well. This comes with the tradeoff of being slower to register a key press, but would function very well in a situation with “phantom presses” or the need for release debouncing. Another method would to have a buffer for each switch and when the buffer is full a key press is registered, this allows the advantage of selecting multiple keys at the same time but would require substantially more hardware to be effective."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#technical-documentation",
+    "href": "labs/lab3/lab3.html#technical-documentation",
+    "title": "Lab 3",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#block-diagram",
+    "href": "labs/lab3/lab3.html#block-diagram",
+    "title": "Lab 3",
+    "section": "Block Diagram",
+    "text": "Block Diagram\n\n\n\nFigure 3: Block diagram of the SystemVerilog written for this lab\n\n\nThe block diagram gives a high-level schematic of the overall design. The top module include the high-speed oscillator, keypad scanner, and dual seven-segment display driver as well as an adder used to count new key presses."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#schematic",
+    "href": "labs/lab3/lab3.html#schematic",
+    "title": "Lab 3",
+    "section": "Schematic",
+    "text": "Schematic\n\n\n\nFigure 4: Schematic of the breadboard circuit for the seven segment display\n\n\nThe schematic gives the design of the circuit breadboarded, the general idea is that the two common terminals of the seven-segment displays are connected and then connected through a 330 ohm resistor to an FPGA pin. The power terminal for each display is connected to the collector of a transistor where the base is connected to an FPGA pin through a 3k resistor. The emitter is then connected to the 3v3 line and this setup allows for 9 pins to control 2 seven-segment displays.\nThe keypad rows are connected as inputs with external 200k pullup resistors for redundancy and the columns are connected directly to FPGA pins to be driven"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#results-and-discussion",
+    "href": "labs/lab3/lab3.html#results-and-discussion",
+    "title": "Lab 3",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\n\n\nFigure 5: Final board design all wired\n\n\nI was able to successfully complete the entire lab with everything functioning correctly. The system is quick and reliable, and I am very satisfied with the product."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#testbench-simulation",
+    "href": "labs/lab3/lab3.html#testbench-simulation",
+    "title": "Lab 3",
+    "section": "Testbench Simulation",
+    "text": "Testbench Simulation\n\n\n\nFigure 6: Waveforms of testbench covering clk_counter module\n\n\n\n\n\nFigure 7: Testbench of clk_counter successfully completing all test cases\n\n\n\n\n\nFigure 8: Waveforms of testbench covering debouncer module\n\n\n\n\n\nFigure 9: Testbench of debouncer successfully completing all test cases\n\n\n\n\n\nFigure 10: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 11: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 12: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 13: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 14: Waveforms of testbench covering dual_segment_display module\n\n\n\n\n\nFigure 15: Testbench of dual_segment_display successfully completing\n\n\n\n\n\nFigure 16: Waveforms of testbench covering keypad module\n\n\n\n\n\nFigure 17: Testbench of keypad successfully completing\n\n\nThe testbenches were used to confirm that the clk counter correctly triggers, the debouncer properly debounces, the dual segment display correctly displays both values, the synchronizer correctly passes through the values, and that the debugging leds in the top module work as expected."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#conclusion",
+    "href": "labs/lab3/lab3.html#conclusion",
+    "title": "Lab 3",
+    "section": "Conclusion",
+    "text": "Conclusion\nTo complete this lab, I began by wiring the breadboard carefully. I then wrote the Verilog modules and testbenches to test any I had modified or created. I ended up making several simple mistakes while writing the Verilog for this project that were difficult to debug. In the future I will begin by more carefully reviewing the net list diagram before attempting debugging in another manner as the mistakes I made were very obvious in this diagram. This lab took me 10 hours to complete."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#ai-prototype-summary",
+    "href": "labs/lab3/lab3.html#ai-prototype-summary",
+    "title": "Lab 3",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nIn this lab I analyzed giving Chat GPT 5 two different types of prompts to complete the lab: 1 shot, and multiple steps.\nLink to 1 shot transcript\nLink to multiple step transcript\nConsidering the two side by side I think there are advantages to each. The advantage of the 1 shot is allowed the most flexibility of design, for someone who isn’t sure about the best approach to go with, it can optimize at a higher level before getting into the specifics of a design. The disadvantage, and the advantage of the multi-step method, is if one already has a design structure in mind and simply wants the chat bot to create this vision, the 1 shot method doesn’t follow that closely, while the multiple step method allows for a specific design of one module that is then integrated by further modules generated.\nFor a hardware designer I would recommend the multi-step process as it forces the designer to already have a clear vision of the hardware, which is important to have before writing code. While I could understand the general scheme of what the LLM was trying to do, it was very difficult to envision the hardware which I believe is strongly counterproductive to good hardware design."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Kaden Cassidy is an “Applied Mathematics in Computation” major at Harvey Mudd College. He works in the VLSI Lab as a Clay-Wolken fellow where he is creating the next generation of ceritifcation and hardware implementation of the RISCV Vector Extension for RISCV processors. He also competes for the CMS Track & Field team in the hammer, shotput and discus throw."
   }
 ]
