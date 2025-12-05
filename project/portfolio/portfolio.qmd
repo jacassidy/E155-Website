@@ -18,6 +18,7 @@ The main goals of this project were to:
 - Implement a **fully hardware Tetris pipeline** on the FPGA with clean, parameterized RTL.
 - Meet real-time **display and responsiveness requirements** (>\~20 Hz update, no visible flicker or ghosting).
 - Extend the course reference designs with **new hardware modules** including on board MCU entropy-based randomization and FPGA PLL module.
+
 ---
 
 # Proficiency & Technical Information
@@ -237,11 +238,15 @@ You can fill in your actual numbers here once measured:
 - **Frame rate:** 60 Hz VGA refresh (target).
 - **Approximate input-to-display latency:** on the order of one frame period (dominated by the display).
 - **FPGA resource utilization:**
-  - LUTs:
-  - Flip-flops:
-  - Block RAMs:
+  - LUTs: 3861
+  - LUT Ripple: 74
+  - PFU Registers: 479
+  - IO Registers: 2
+  - IO Buffers: 11
 
 - **Clock frequency of main game logic:**
+
+HSOSC used as the global game logic flop clock at 48Mhz. Timing shows a slack of 5.809ns.
 
 These metrics demonstrate that the design has comfortable timing margins, meets its refresh requirements, and fits within the available FPGA resources.
 
