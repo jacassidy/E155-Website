@@ -84,18 +84,18 @@
     "text": "AI Usage\nArtificial intelligence tools were used throughout the development of this project to support both hardware and software design tasks. AI was especially helpful during the implementation of the new PLL hardware module on the FPGA, where it accelerated debugging and clarified vendor-specific configuration details. It was also used extensively when writing and refining Verilog modules and their accompanying testbenches, as well as during the final cleanup of the microcontroller firmware.\nWhile AI was generally accurate when provided with complete and precise context, we found it most effective as a correctness amplifier—helping verify logic, catch oversight errors, and suggest clearer structural patterns. As the project deadline approached and fatigue increased, we relied on AI to cross-check our reasoning and ensure that we were not introducing avoidable mistakes. Ultimately, AI served as a supplemental tool that improved workflow efficiency without replacing our judgment or engineering responsibilities."
   },
   {
-    "objectID": "project/portfolio/portfolio.html#demo-video",
-    "href": "project/portfolio/portfolio.html#demo-video",
-    "title": "Project Portfolio: Microcontroller–FPGA Tetris System",
-    "section": "Demo Video",
-    "text": "Demo Video\nA short video demonstrates the system running Tetris on the VGA display, showing:\n\nStable 640×480@60 Hz video.\nPiece motion, rotation, and line clears.\nHardware-generated random pieces and responsive keyboard control."
-  },
-  {
     "objectID": "project/portfolio/portfolio.html#photos",
     "href": "project/portfolio/portfolio.html#photos",
     "title": "Project Portfolio: Microcontroller–FPGA Tetris System",
     "section": "Photos",
     "text": "Photos\nPhotos of the final design help document the hardware:\n\nFPGA board connected to the VGA monitor.\nMCU board with SPI connection to the FPGA.\nAny custom PCBs or wiring harnesses.\nClose-up of the VGA output showing the Tetris game."
+  },
+  {
+    "objectID": "project/portfolio/portfolio.html#demo-video",
+    "href": "project/portfolio/portfolio.html#demo-video",
+    "title": "Project Portfolio: Microcontroller–FPGA Tetris System",
+    "section": "Demo Video",
+    "text": "Demo Video\nA short video demonstrates the system running Tetris on the VGA display, showing:\n\nStable 640×480@60 Hz video.\nPiece motion, rotation, and line clears.\nHardware-generated random pieces and responsive keyboard control.\n\n\n\n\nYour browser does not support the video tag. \n:::"
   },
   {
     "objectID": "index.html",

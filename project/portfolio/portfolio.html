@@ -200,8 +200,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#multimedia-documentation" id="toc-multimedia-documentation" class="nav-link" data-scroll-target="#multimedia-documentation">Multimedia Documentation</a>
   <ul class="collapse">
-  <li><a href="#demo-video" id="toc-demo-video" class="nav-link" data-scroll-target="#demo-video">Demo Video</a></li>
   <li><a href="#photos" id="toc-photos" class="nav-link" data-scroll-target="#photos">Photos</a></li>
+  <li><a href="#demo-video" id="toc-demo-video" class="nav-link" data-scroll-target="#demo-video">Demo Video</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -352,7 +352,7 @@ ul.task-list li input[type="checkbox"] {
 <li>SPI, PS/2, and VGA connectors with signal names and reference designators.</li>
 <li>Any custom IO or adapter boards used.</li>
 </ul>
-<p><img src="images/schematic.png" class="img-fluid" alt="System schematic"> <img src="images/Blockdiagram.svg" class="img-fluid" alt="FPGA top-level block diagram"> –&gt;</p>
+<p><img src="images/schematic.png" class="img-fluid" alt="System schematic"> <img src="images/Blockdiagram.png" class="img-fluid" alt="FPGA top-level block diagram"> –&gt;</p>
 <hr>
 </section>
 </section>
@@ -587,25 +587,6 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="multimedia-documentation" class="level1">
 <h1>Multimedia Documentation</h1>
-<section id="demo-video" class="level2">
-<h2 class="anchored" data-anchor-id="demo-video">Demo Video</h2>
-<p>A short video demonstrates the system running Tetris on the VGA display, showing:</p>
-<ul>
-<li>Stable 640×480@60 Hz video.</li>
-<li>Piece motion, rotation, and line clears.</li>
-<li>Hardware-generated random pieces and responsive keyboard control.</li>
-</ul>
-<!--
-When you have a hosted video (e.g., YouTube), you can embed it like this:
-
-<iframe width="560" height="315"
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="MicroPs FPGA Tetris Demo"
-        frameborder="0"
-        allowfullscreen>
-</iframe>
--->
-</section>
 <section id="photos" class="level2">
 <h2 class="anchored" data-anchor-id="photos">Photos</h2>
 <p>Photos of the final design help document the hardware:</p>
@@ -615,15 +596,24 @@ When you have a hosted video (e.g., YouTube), you can embed it like this:
 <li>Any custom PCBs or wiring harnesses.</li>
 <li>Close-up of the VGA output showing the Tetris game.</li>
 </ul>
-<!--
-Uncomment and point these to your actual images when ready.
+<p><img src="images/game.jpg" class="img-fluid" alt="Game"> <img src="images/box.jpg" class="img-fluid" alt="Game Box"> <img src="images/keyboard.jpg" class="img-fluid" alt="keyboard"></p>
+</section>
+<section id="demo-video" class="level2">
+<h2 class="anchored" data-anchor-id="demo-video">Demo Video</h2>
+<p>A short video demonstrates the system running Tetris on the VGA display, showing:</p>
+<ul>
+<li>Stable 640×480@60 Hz video.</li>
+<li>Piece motion, rotation, and line clears.</li>
+<li>Hardware-generated random pieces and responsive keyboard control.</li>
+</ul>
+<div class="video-player">
+<video width="640" controls="">
+<source src="images/video.mp4" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+<p>:::</p>
 
-![FPGA board and VGA monitor](images/fpga-vga-setup.jpg)
-![MCU and FPGA interconnect](images/mcu-fpga-interconnect.jpg)
-![Final system overview](images/microps-final-setup.jpg)
--->
 
-
+</video></div>
 </section>
 </section>
 
