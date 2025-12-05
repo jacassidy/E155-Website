@@ -19,10 +19,14 @@ website:
             href: labs/lab4/lab4.qmd
           - text: "Lab 5"
             href: labs/lab5/lab5.qmd
+          - text: "Lab 6"
+            href: labs/lab6/lab6.qmd
       - text: "Project"
         menu:               # this creates a dropdown
           - text: "Proposal"
             href: project/proposal/proposal.qmd
+          - text: "Portfolio"
+            href: project/portfolio/portfolio.qmd
 
 format:
   html:
@@ -31,6 +35,3 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
-
