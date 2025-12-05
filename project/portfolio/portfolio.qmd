@@ -138,11 +138,8 @@ This hardware overlay is extremely helpful for debugging timing issues and verif
 - SPI, PS/2, and VGA connectors with signal names and reference designators.
 - Any custom IO or adapter boards used.
 
-<!--
-Uncomment and point these to your exported images when ready.
-
-![System schematic](images/system-schematic.png)
-![FPGA top-level block diagram](images/fpga-top-block-diagram.svg)
+![System schematic](images/schematic.png)
+![FPGA top-level block diagram](images/Blockdiagram.svg)
 -->
 
 ---
@@ -345,7 +342,7 @@ References are presented in a consistent numbered format.
 
 3. **FPGA Family Datasheet**
    Lattice Semiconductor. *iCE40 UltraPlus Family Data Sheet.*
-   (Or the relevant FPGA family used in this project.)
+   <https://hmc-e155.github.io/assets/doc/FPGA-DS-02008-2-0-iCE40-UltraPlus-Family-Data-Sheet.pdf>
 
 4. **Toolchain Documentation**
    Lattice Semiconductor. *Radiant Software User Guide* and application notes for the chosen FPGA.
@@ -356,6 +353,7 @@ References are presented in a consistent numbered format.
 
 6. **Course Materials**
    Internal course notes and lab handouts for Microprocessors / Embedded Systems (MicroPs), including MCU–FPGA communication, VGA controller design, and PS/2 interface labs.
+   <https://hmc-e155.github.io/>
 
 7. **Related FPGA Tetris Projects**
    Various FPGA Tetris implementations used for conceptual inspiration and comparison of architectures.
