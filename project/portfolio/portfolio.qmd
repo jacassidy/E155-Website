@@ -139,7 +139,7 @@ This hardware overlay is extremely helpful for debugging timing issues and verif
 - Any custom IO or adapter boards used.
 
 ![System schematic](images/schematic.png)
-![FPGA top-level block diagram](images/Blockdiagram.svg)
+![FPGA top-level block diagram](images/Blockdiagram.png)
 -->
 
 ---
@@ -368,25 +368,6 @@ References are presented in a consistent numbered format.
 
 # Multimedia Documentation
 
-## Demo Video
-
-A short video demonstrates the system running Tetris on the VGA display, showing:
-
-- Stable 640×480@60 Hz video.
-- Piece motion, rotation, and line clears.
-- Hardware-generated random pieces and responsive keyboard control.
-
-<!--
-When you have a hosted video (e.g., YouTube), you can embed it like this:
-
-<iframe width="560" height="315"
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="MicroPs FPGA Tetris Demo"
-        frameborder="0"
-        allowfullscreen>
-</iframe>
--->
-
 ## Photos
 
 Photos of the final design help document the hardware:
@@ -396,10 +377,21 @@ Photos of the final design help document the hardware:
 - Any custom PCBs or wiring harnesses.
 - Close-up of the VGA output showing the Tetris game.
 
-<!--
-Uncomment and point these to your actual images when ready.
+![Game](images/game.jpg)
+![Game Box](images/box.jpg)
+![keyboard](images/keyboard.jpg)
 
-![FPGA board and VGA monitor](images/fpga-vga-setup.jpg)
-![MCU and FPGA interconnect](images/mcu-fpga-interconnect.jpg)
-![Final system overview](images/microps-final-setup.jpg)
--->
+## Demo Video
+
+A short video demonstrates the system running Tetris on the VGA display, showing:
+
+- Stable 640×480@60 Hz video.
+- Piece motion, rotation, and line clears.
+- Hardware-generated random pieces and responsive keyboard control.
+
+::: {.video-player}
+<video width="640" controls>
+  <source src="images/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+:::
